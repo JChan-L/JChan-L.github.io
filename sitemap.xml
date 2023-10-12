@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://jchan-l.github.io/undefined/d591d4e6.html</loc>
+    
+    <lastmod>2023-10-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://jchan-l.github.io/undefined/d87f7e0c.html</loc>
     
     <lastmod>2023-10-12</lastmod>
@@ -23,15 +32,6 @@
     <loc>https://jchan-l.github.io/undefined/e00fb546.html</loc>
     
     <lastmod>2023-10-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://jchan-l.github.io/undefined/d591d4e6.html</loc>
-    
-    <lastmod>2023-10-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -90,14 +90,14 @@
   </url>
   
   <url>
-    <loc>https://jchan-l.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
+    <loc>https://jchan-l.github.io/tags/Linux/</loc>
     <lastmod>2023-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jchan-l.github.io/tags/Linux/</loc>
+    <loc>https://jchan-l.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2023-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
