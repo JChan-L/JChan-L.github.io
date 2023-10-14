@@ -99,14 +99,14 @@
   </url>
   
   <url>
-    <loc>https://jchan-l.github.io/tags/Linux/</loc>
+    <loc>https://jchan-l.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2023-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://jchan-l.github.io/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
+    <loc>https://jchan-l.github.io/tags/Linux/</loc>
     <lastmod>2023-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -122,6 +122,13 @@
   </url>
   
   <url>
+    <loc>https://jchan-l.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2023-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://jchan-l.github.io/categories/%E4%BC%81%E4%B8%9A%E5%AE%89%E5%85%A8%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</loc>
     <lastmod>2023-10-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -130,13 +137,6 @@
   
   <url>
     <loc>https://jchan-l.github.io/categories/Linux/</loc>
-    <lastmod>2023-10-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://jchan-l.github.io/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</loc>
     <lastmod>2023-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
