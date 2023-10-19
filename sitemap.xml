@@ -188,7 +188,7 @@
   </url>
   
   <url>
-    <loc>https://jchan-l.github.io/categories/%E8%BD%AF%E8%80%83%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/</loc>
+    <loc>https://jchan-l.github.io/categories/Linux/</loc>
     <lastmod>2023-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -202,7 +202,7 @@
   </url>
   
   <url>
-    <loc>https://jchan-l.github.io/categories/Linux/</loc>
+    <loc>https://jchan-l.github.io/categories/%E8%BD%AF%E8%80%83%E7%BD%91%E7%BB%9C%E5%B7%A5%E7%A8%8B%E5%B8%88/</loc>
     <lastmod>2023-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
