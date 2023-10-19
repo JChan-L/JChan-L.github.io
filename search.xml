@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>网络安全专题</title>
+      <link href="/undefined/844715e6.html"/>
+      <url>/undefined/844715e6.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="主动攻击与被动攻击"><a href="#主动攻击与被动攻击" class="headerlink" title="主动攻击与被动攻击"></a>主动攻击与被动攻击</h1><p>被动攻击：典型的是监听，最难被检测，重点是预防，主要手段是加密<br>主动攻击：假冒、重放、欺骗、消息篡改和拒绝服务，重点是检测而不是预防，手段有防火墙、IDS等技术</p><h1 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h1><p>对称加密算法（共享密钥加密算法）：加密和解密密钥相同<br>数据加密标准(DES)：一种分组密码，在加密前，先对整个明文进行分组。每一个分组为64位，之后进行16轮迭代，产生一组64位密文数据，使用的密钥是56位<br>3DES：使用两个密钥，执行三次DES算法，密钥长度是112位</p><hr><p>国际数据加密算法（IDEA）使用128位密钥，把明文分成64位的块，进行8轮迭代。IDEA可以使用硬件或软件实现，比DES快<br>高级加密标准（Advanced Encryption Standard，AES）AES支持128，192和256位三种密钥长度，可通过硬件实现<br>流加密算法RC4：加密速度快，可以达到DES 10倍</p><h1 id="公钥加密"><a href="#公钥加密" class="headerlink" title="公钥加密"></a>公钥加密</h1><p>每个实体有两个密钥：公钥公开，私钥自己保存</p><p>保密通信：公钥加密，私钥解密<br>数字签名：私钥加密，公钥解密</p><p>典型公钥加密算法：RSA</p><h1 id="哈希Hash（散列函数）MD5-SHA"><a href="#哈希Hash（散列函数）MD5-SHA" class="headerlink" title="哈希Hash（散列函数）MD5 SHA"></a>哈希Hash（散列函数）MD5 SHA</h1><p>MD5：128位<br>SHA：160位</p><p>不可逆性（单向）：几乎无法通过Hash结果推导出原文<br>无碰撞性：没用可能找到 Y 的hash值等于 X 的hash值<br>雪崩效应：输入轻微变化，Hash输出值产生巨大变化</p><p>MD5：报文按512位分组，最后得到128位报文摘要<br>SHA：对512位长的数据块进行复杂运行，最终产生160位散列值，比MD5更安全，但比MD5慢</p><h1 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h1><p>用于确认发送者身份和消息完整性</p><p>接收者能够核实发送者<br>发送者事后不能抵赖对报文的签名<br>接收者不能伪造对报文的签名</p><p><img src="/../images/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%93%E9%A2%98231018.png"></p><h1 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h1><p><img src="/../images/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%93%E9%A2%98231018-1.png"></p><h2 id="CA"><a href="#CA" class="headerlink" title="CA"></a>CA</h2><p><img src="/../images/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%93%E9%A2%98231018-2.png"></p><h1 id="PKI与Kerberos体系"><a href="#PKI与Kerberos体系" class="headerlink" title="PKI与Kerberos体系"></a>PKI与Kerberos体系</h1><p><img src="/../images/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%93%E9%A2%98231019.png"></p><h1 id="攻击特征码"><a href="#攻击特征码" class="headerlink" title="攻击特征码"></a>攻击特征码</h1><p>SQL注入攻击：select，create，user<br>跨站脚本攻击：script<br>木马：c&amp;c，trojan&#x2F;troy<br>一句话木马：eval</p><h1 id="常见病毒类型"><a href="#常见病毒类型" class="headerlink" title="常见病毒类型"></a>常见病毒类型</h1><table><thead><tr><th align="left"><div>病毒类型</div></th><th align="left">关键字</th><th align="left">特征</th><th align="left">代表</th></tr></thead><tbody><tr><td align="left">系统病毒</td><td align="left">前缀为win32，win95，PE，W32，W95等</td><td align="left">感染windows:系统的exe或dll文件，并通过这些文件进行传播</td><td align="left">CIH病毒</td></tr><tr><td align="left">蠕虫病毒</td><td align="left">前缀为worm</td><td align="left"><div>通过网络或者系统漏洞进行传播，可以向外发送带毒邮件或阻塞网络</div></td><td align="left">冲击波（阻塞网络）、小邮差病毒(发送带毒邮件)</td></tr><tr><td align="left">木马病毒和黑客病毒</td><td align="left">木马前缀为Trojan，黑客病毒前缀为Hack</td><td align="left">通过网络或漏洞进入系统并隐藏起来，木马负责入侵用户计算机，黑客通过木马进行远程控制</td><td align="left">游戏木马Trojan.Lmir.PSW60</td></tr><tr><td align="left">脚本病毒</td><td align="left">前缀是Script</td><td align="left">使用脚本语言编写，通过网页进行传播</td><td align="left">欢乐时光病VBS.Happtime<div>红色代码Script..Redlof<br></div></td></tr><tr><td align="left">宏病毒</td><td align="left">前缀是Macro</td><td align="left">特殊脚本病毒，感染word和excel</td><td align="left">Macro.Word97</td></tr><tr><td align="left">后门病毒</td><td align="left">前缀为Backdoor</td><td align="left">通过网络传播，给系统开后门，给用户计算机代理安全隐患</td><td align="left">入侵后添加隐藏账号</td></tr><tr><td align="left">破坏性程序病毒</td><td align="left">前缀为Harm</td><td align="left">本身具有好看的图标来诱感用户点击，当用户点击，对计算机产生破环</td><td align="left">熊猫烧香</td></tr><tr><td align="left">捆绑机病毒</td><td align="left">前缀为Binder</td><td align="left">将特定程序捆绑下载</td><td align="left">下载大礼包或某些软件捆绑病毒</td></tr></tbody></table><h1 id="等保"><a href="#等保" class="headerlink" title="等保"></a>等保</h1><p><img src="/../images/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%93%E9%A2%98231019-1.png"></p><h2 id="实际落地定级参照"><a href="#实际落地定级参照" class="headerlink" title="实际落地定级参照"></a>实际落地定级参照</h2><p>一级：适用于小型私营企业、中小学、一般乡镇所属信息系统、一般县级单位中的信息系统。</p><p>二级：适用于县级某些单位中的重要信息系统，地市级以上企事业单位内部的一般信息系统，如非涉及敏感信息的办公系统。（区县法院、医院）</p><p>三级：适用于地市级以上国家机关、企事业单位内部重要的信急系统，包括涉及工作秘密、商业秘密、敏感信息的办公系统和管理系统，以及全国联网运行的重要信息系统。（大部分定在三级）</p><p>四级：适用于国家重要领域、特别重要部门中的核心系统，如电力、电信、铁路、银行等，涉及国家安全和国计民生的核心系统。</p><p>五级：适用于国家重要领域、重要部门中的极端重要系统。</p><h2 id="等保标准变化"><a href="#等保标准变化" class="headerlink" title="等保标准变化"></a>等保标准变化</h2><p><img src="/../images/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B8%93%E9%A2%98231019-2.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软考网络工程师 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软考网工 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>RAID技术专题</title>
       <link href="/undefined/d0dbb738.html"/>
       <url>/undefined/d0dbb738.html</url>
