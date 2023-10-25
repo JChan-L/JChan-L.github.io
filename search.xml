@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title></title>
+      <link href="/0.html"/>
+      <url>/0.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>模拟通信：信源产生是<strong>模拟数据</strong>，以模拟信号传输<br>数字通信：信源产生是<strong>模拟数据</strong>，以数字信号传输<br>数据通信：信源产生是<strong>数字数据</strong>，以任何方式传输</p><h1 id="信道特性"><a href="#信道特性" class="headerlink" title="信道特性"></a>信道特性</h1><h2 id="信道带宽"><a href="#信道带宽" class="headerlink" title="信道带宽"></a>信道带宽</h2><p>模拟信道的带宽：<br>W &#x3D; f2 - f1（单位：HZ）<br>信道能通过的最高频率f2 - 最低频率f1</p><p><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231024.png"><br><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231024-1.png"></p><p><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231024-2.png"></p><p>香农定理<br><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231024-3.png"></p><h2 id="误码率"><a href="#误码率" class="headerlink" title="误码率"></a>误码率</h2><p>定义：传输二进制位时出现差错的概率<br>公式：<br><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231024-4.png"></p><h2 id="信道延迟"><a href="#信道延迟" class="headerlink" title="信道延迟"></a>信道延迟</h2><p>定义：信号在信道中从发送端到接收端传输所需要的时间<br>产生：距离和传输速度<br>应用：电缆中信号的传输速度：200m&#x2F;us；卫星的通信时延：270ms</p><p>数据传输延迟时间 &#x3D; 两地距离 &#x2F; 传输速度<br>数据接收时间 &#x3D; 发送数据 &#x2F; 数据速率<br>数据传输总时长 &#x3D; 延迟时间 + 接收时间</p><h1 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h1><h2 id="光缆"><a href="#光缆" class="headerlink" title="光缆"></a>光缆</h2><p><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231024-5.png"></p><h1 id="数据编码"><a href="#数据编码" class="headerlink" title="数据编码"></a>数据编码</h1><p>查分曼码，看两个相邻的波形：<br>波形相同，后一个波形表示0<br>波形不同，后一个波形表示1</p><p><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231025.png"></p><h2 id="4B-5B编码"><a href="#4B-5B编码" class="headerlink" title="4B&#x2F;5B编码"></a>4B&#x2F;5B编码</h2><p>两级编码方案：将4bit数据编码成5bit符号 + 反向不归零码NRZ-I<br>优点：编码效率提高到80%，应用：100BASE-FX（100BASE-TX用PAM-5）</p><h2 id="8B-10B编码"><a href="#8B-10B编码" class="headerlink" title="8B&#x2F;10B编码"></a>8B&#x2F;10B编码</h2><p>将8bit数据分成两组（3bit+5bit），再编码成两组符号（4bit+6bit）<br>优点：8bit &#x2F; 10bit&#x3D;80%，应用：千兆以太网（1000BASE-T用PAM-5）</p><h2 id="64B-66B编码"><a href="#64B-66B编码" class="headerlink" title="64B&#x2F;66B编码"></a>64B&#x2F;66B编码</h2><p>将64bit数据编码成66bit符号。编码效率64&#x2F;66&#x3D;97%，用于千兆以太网</p><h1 id="数字调制技术"><a href="#数字调制技术" class="headerlink" title="数字调制技术"></a>数字调制技术</h1><p>把数字数据调制为模拟信号</p><p>调制原理：通过调制模拟载波信号的3个参数（幅度，频移和相移）来表示数字数据</p><h2 id="调制技术"><a href="#调制技术" class="headerlink" title="调制技术"></a>调制技术</h2><p>幅度键控（ASK）：有幅度表示1；无幅度表示0<br>频移键控（FSK）：频率高表示1；频率低表示0<br>相移键控（PSK）：2相位：正相表示1；反相表示0<br>正交幅度调制（QAM）：将ASK和PSK结合，进行复合调制。调制方法：幅度相同，相位差90°<br><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231025-1.png"></p><p><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231025-2.png"></p><p><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231025-4.png"></p><p><img src="/../images/%E6%95%B0%E6%8D%AE%E9%80%9A%E4%BF%A1231025-3.png"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>操作系统</title>
+      <link href="/437.html"/>
+      <url>/437.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="处理机管理"><a href="#处理机管理" class="headerlink" title="处理机管理"></a>处理机管理</h1><h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><p>程序：是指令的集合，静态的代码<br>进程：进程是正在运行的程序，是资源分配的最小单位。基本特性：动态性，并发性，独立性，异步性<br>线程：每一个任务就是一个线程，进程由一个或多个线程组成，线程之间共享进程资源，是CPU调度最小单位</p><p>进程的三种状态：运行，就绪，阻塞</p><p><img src="/../images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F231023.png"></p><p>运行：进程占用处理机，并运行<br>就绪：进程准备好运行条件，等待系统分配<br>阻塞：又称睡眠态，指进程没用准备好，等待某个事件完成</p><h2 id="进程同步和互斥"><a href="#进程同步和互斥" class="headerlink" title="进程同步和互斥"></a>进程同步和互斥</h2><p>同步：多个相互合作的进程在某些确定点上协调工作顺序过程，如进程B需要得到进程A的数据才能进行后续工作</p><p>互斥：各种进程可以共享，但是有些资源一次只能提供一个进程使用（如打印机），也称临界资源</p><h2 id="信号量机制和PV操作"><a href="#信号量机制和PV操作" class="headerlink" title="信号量机制和PV操作"></a>信号量机制和PV操作</h2><h4 id="信号量"><a href="#信号量" class="headerlink" title="信号量"></a>信号量</h4><p>信号量解决进程同步和互斥的工具</p><p>分两种：<br>公有信号量：实现进程间的互斥，初值等于1或资源数量<br>私有信号量：实现进程间的同步，初值等于0或正整数</p><p>信号量S&gt;&#x3D;0时，表示某资源的可用数量，S&lt;&#x3D;0时，表阻塞队列钟等待资源的进程数量</p><h4 id="PV操作"><a href="#PV操作" class="headerlink" title="PV操作"></a>PV操作</h4><p>PV操作用来实现进程同步和互斥，P操作表示申请一个资源，V操作表示释放一个资源</p><p>实现互斥的方法：<br>信号量设为1，当进程使用时执行P操作，释放资源时执行V操作</p><p>实现同步的方法：<br>将信号量S与消息关联，当S等于0时表示没用消息，当S不等于0表示有消息。<br>进程B调用P操作测试消息是否到达，进程A调用V操作通知消息已经准备好</p><p><strong>信号量取值范围 &#x3D; -(进程数量 - 可用资源数量) ~ 可用资源数量</strong></p><h2 id="进程死锁"><a href="#进程死锁" class="headerlink" title="进程死锁"></a>进程死锁</h2><p>当多个进程竞争使用资源时，资源已经全部被占用，于是没用任何一个进程能够继续运行，这种情况叫死锁</p><p><img src="/../images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F231023-1.png"></p><p>产生死锁的情况主要有：<br>    进程推荐顺序不当、同类资源分配不当、PV操作使用不当</p><p>死锁预防：<br>    打破互斥条件、打破不可抢占条件、打破占有且申请条件（保证至少有1个进程获取足够的资源）</p><p>不死锁公式：<br>    设m是资源数量，n是进程数量，w是每个进程需要的资源数量<br>    资源数量 &gt;&#x3D; 进程数量 * (每个进程需要的资源数量-1)+1<br>    m&#x3D;4，n&#x3D;3，w&#x3D;2，计算得到4&gt;&#x3D;4，不死锁<br>    m&#x3D;4，n&#x3D;3，w&#x3D;3，计算得到4&gt;&#x3D;7，死锁</p><h2 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h2><ol><li>先来先服务算法</li><li>优先数算法</li><li>时间片轮转算法</li><li>分级算法</li></ol><h1 id="存储管理"><a href="#存储管理" class="headerlink" title="存储管理"></a>存储管理</h1><h2 id="存储地址"><a href="#存储地址" class="headerlink" title="存储地址"></a>存储地址</h2><p>绝对地址<br>逻辑地址<br>地址重定位</p><p>计算寻址范围<br>若某计算机字长为32位，内存容量为2GB，按字节编址，则可寻址范围为512M</p><p>公式：容量&#x2F;字长&#x3D;2048MB&#x2F;（32&#x2F;8）Byte</p><h2 id="计算芯片需求量"><a href="#计算芯片需求量" class="headerlink" title="计算芯片需求量"></a>计算芯片需求量</h2><p>内存按字节编址，地址从90000H到CFFFFH，若用存储容量为16K*8bit的存储芯片构成该内存，需要的存储芯片为 16 片</p><p>地址数量：(CFFFFH - 90000H + 1) &#x3D; 40000H<br>转换成10进制：262144<br>转换成KB：262144 &#x2F; 1024 &#x3D; 256<br>芯片数量：256 &#x2F; 16 &#x3D; 16</p><h2 id="存储管理-1"><a href="#存储管理-1" class="headerlink" title="存储管理"></a>存储管理</h2><h3 id="分页存储："><a href="#分页存储：" class="headerlink" title="分页存储："></a>分页存储：</h3><p>将一个进程的地址空间划分成大小相同的块，称为页面<br>优点：页表是对程序员来说是透明的，地址变换快，调入操作简单<br>缺点：各页不是程序的独立模块，不便于实现程序和数据保护</p><h3 id="分段存储"><a href="#分段存储" class="headerlink" title="分段存储"></a>分段存储</h3><p>分段原理：地址空间被划分为可变长的块，称为段<br>优点是消除了内存零头，易于实现存储保护，便于程序动态装配<br>缺点是调入操作复杂，地址变换速度慢于页式存储管理</p><h3 id="虚拟存储"><a href="#虚拟存储" class="headerlink" title="虚拟存储"></a>虚拟存储</h3><p>虚拟存储是解决主存容量和存取速度矛盾的一种方法<br>原理是利用大容量的外存（通常是高速硬盘）来扩充内存，产生一个比物理内存空间大的多的逻辑虚拟内存空间，从而增强系统的处理能力</p><h2 id="作业管理"><a href="#作业管理" class="headerlink" title="作业管理"></a>作业管理</h2><p>作业是用户在一次上机过程中，要求计算机所做的工作的集合。</p><p>作业状态：<br>提交状态：用户向系统提交一个作业时<br>后背状态：用户作业等待进入内存时<br>执行状态<br>完成状态</p><h1 id="信息系统开发"><a href="#信息系统开发" class="headerlink" title="信息系统开发"></a>信息系统开发</h1><h2 id="软件生命周期"><a href="#软件生命周期" class="headerlink" title="软件生命周期"></a>软件生命周期</h2><p>计划 -&gt; 分析 -&gt; 设计 -&gt; 实现 -&gt; 测试 -&gt; 运维</p><h2 id="软件开发模型"><a href="#软件开发模型" class="headerlink" title="软件开发模型"></a>软件开发模型</h2><h4 id="瀑布模型："><a href="#瀑布模型：" class="headerlink" title="瀑布模型："></a>瀑布模型：</h4><p>明确了要求</p><h4 id="原型化模型："><a href="#原型化模型：" class="headerlink" title="原型化模型："></a>原型化模型：</h4><p>用户提出的问题进行总结，就需求达到一致意见，开发一个原型并运行。然后对原型进行反复修改完善。不适合大型系统。</p><h4 id="演化模型："><a href="#演化模型：" class="headerlink" title="演化模型："></a>演化模型：</h4><p>根据用户需求，快速分析构造该第一个初始版本，然后根据用户在使用过程中提出的建议进行改进，产生新的版本，重复这一过程，使用户最终获得满意的软件。</p><h4 id="增量模型："><a href="#增量模型：" class="headerlink" title="增量模型："></a>增量模型：</h4><p>整个软件产品被分解成若干个构件，开发人员逐个构件的交付产品。优点是适应变化，降低开发风险。</p><h4 id="螺旋模型："><a href="#螺旋模型：" class="headerlink" title="螺旋模型："></a>螺旋模型：</h4><p>综合了瀑布模型和演化模型的优点，增加了风险分析。适用于大型复杂的系统开发。优点是支持用户需注的动态变化，降低风险，缺点是增加开发成本。</p><h4 id="喷泉模型："><a href="#喷泉模型：" class="headerlink" title="喷泉模型："></a>喷泉模型：</h4><p>主要用于面向对象的开发过程，核心特点是迭代。所有开发活动没有明显边界，允许各种开发活动交叉进行。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软考网络工程师 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软考网工 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>DHCP攻击及防御</title>
       <link href="/8db6.html"/>
       <url>/8db6.html</url>
